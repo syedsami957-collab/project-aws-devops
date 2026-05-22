@@ -1,4 +1,4 @@
-name: Deploy Website to EC2
+name: Deploy to EC2
 
 on:
   push:
@@ -10,23 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy files to EC2
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "index.html"
-          target: "/var/www/html"
+      - name: Setup SSH key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
+          chmod 400 key.pem
 
-      - name: Restart Nginx
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
+      - name: Copy file to EC2
+        run: |
+          scp -o StrictHostKeyChecking=no -i key.pem index.html ubuntu@${{ secrets.EC2_HOST }}:/tmp/
+
+      - name: Deploy on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+            sudo mv /tmp/index.html /var/www/html/index.html
             sudo systemctl restart nginx
+          EOF
