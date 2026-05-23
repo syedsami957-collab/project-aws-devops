@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOOCH DEVOPS AND CLOUD COMPUTING</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px;
+    }
+
+    .container{
+      width:100%;
+      max-width:1000px;
+      text-align:center;
+      background: rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding:60px 40px;
+      border-radius:20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .badge{
+      display:inline-block;
+      background:#22c55e;
+      color:#0f172a;
+      padding:10px 20px;
+      border-radius:50px;
+      font-size:14px;
+      font-weight:bold;
+      margin-bottom:25px;
+    }
+
+    h1{
+      font-size:56px;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    h1 span{
+      color:#38bdf8;
+    }
+
+    p{
+      font-size:20px;
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:40px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:20px;
+      margin-top:30px;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.06);
+      padding:25px;
+      border-radius:15px;
+      transition:0.3s ease;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover{
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      color:#38bdf8;
+    }
+
+    .footer{
+      margin-top:50px;
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:14px 28px;
+      background:#38bdf8;
+      color:#0f172a;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#0ea5e9;
+      transform:scale(1.05);
+    }
+
+    @media(max-width:768px){
+      h1{
+        font-size:38px;
+      }
+
+      p{
+        font-size:17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="badge">
+      DEVOPS • CLOUD • AUTOMATION
+    </div>
+
+    <h1>
+      Welcome to <span>SOOCH DEVOPS</span><br>
+      AND CLOUD COMPUTING
+    </h1>
+
+    <p>
+      Building scalable cloud infrastructure, automating deployments,
+      and mastering modern DevOps technologies with innovation and reliability.
+    </p>
+
+    <a href="#" class="btn">Explore Project</a>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>AWS Cloud</h3>
+        <p>
+          Deploying scalable cloud infrastructure using AWS services and automation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Linux & NGINX</h3>
+        <p>
+          Managing secure Linux servers and hosting production-ready applications.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>CI/CD Pipelines</h3>
+        <p>
+          Automating testing and deployment workflows for faster delivery.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Infrastructure as Code</h3>
+        <p>
+          Provisioning infrastructure efficiently using Terraform and DevOps tools.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      © 2026 SOOCH DEVOPS AND CLOUD COMPUTING | Powered by NGINX on AWS EC2
+    </div>
+
+  </div>
+
+</body>
+</html>
