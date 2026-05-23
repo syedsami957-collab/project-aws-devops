@@ -1,8 +1,28 @@
-- name: Deploy to EC2
-  run: |
-    scp -o StrictHostKeyChecking=no -i key.pem index.html ubuntu@${{ secrets.EC2_HOST }}:/tmp/
+name: Deploy to EC2
 
-    ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
-      sudo mv /tmp/index.html /var/www/html/index.html
-      sudo systemctl restart nginx
-    EOF
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create SSH Key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
+          chmod 400 key.pem
+
+      - name: Deploy index.html to EC2
+        run: |
+          scp -o StrictHostKeyChecking=no -i key.pem index.html ubuntu@${{ secrets.EC2_HOST }}:/tmp/index.html
+
+          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+            sudo mv /tmp/index.html /var/www/html/index.html
+            sudo systemctl restart nginx
+          EOF
